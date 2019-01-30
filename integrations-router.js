@@ -87,7 +87,7 @@ integrationsRouter.post('/', async (req, res, next) => {
 				// If new type was not inserted, affectedRows = 0
 				// Set typeIndex to correct index
 				if (!affectedRows) {
-					const response = await pool.query(`SELECT id FROM DATA_TYPES name = '${payloadName}';`);
+					const response = await pool.query(`SELECT id FROM DATA_TYPES WHERE name = '${payloadName}';`);
 					const {id} = response[0];
 					typeIndex = id;
 				}
