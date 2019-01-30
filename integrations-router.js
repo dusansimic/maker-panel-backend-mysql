@@ -4,6 +4,7 @@ const pool = require('./pool');
 const integrationsRouter = express.Router(); // eslint-disable-line new-cap
 
 const isInteger = x => (typeof x === 'number') && (x % 1 === 0);
+const truncateTimestampForMySQL = timestamp => timestamp.replace('T', ' ').replace('Z', '');
 function getType(value) {
 	const type = typeof value;
 
@@ -31,6 +32,7 @@ async function addPackageToDB(appId, devId, timestamp, data) {
 	// Check if app is added into APPLICATION_IDS table
 	const applications = await pool.query(`SELECT id FROM APPLICATION_IDS WHERE app_id = '${appId}'`);
 	const appExistsInDB = applications.length !== 0;
+	timestamp = truncateTimestampForMySQL(timestamp);
 
 	if (!appExistsInDB) {
 		// Add app and get index in db
