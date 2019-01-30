@@ -1,0 +1,24 @@
+{
+  "name": "maker-panel-backend-mysql",
+  "version": "0.0.0",
+  "description": "Maker panel backend that uses MySQL as a database.",
+  "main": "app.js",
+  "repository": "https://github.com/dusansimic/maker-panel-backend-mysql",
+  "author": "Dušan Simić <dusan.simic1810@gmail.com> (dusansimic.me)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mailgun-js": "^0.22.0",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1",
+    "xo": "^0.24.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "xo"
+  }
+}
