@@ -2,6 +2,8 @@ const util = require('util');
 const mysql = require('mysql');
 const Mailgun = require('mailgun-js');
 const config = require('./config');
+
+// eslint-disable-next-line new-cap
 const mailgun = Mailgun({
 	apiKey: config.emailNotificationsApiKey,
 	domain: config.emailNotificationsDomain
@@ -19,7 +21,7 @@ const pool = mysql.createPool({
 
 pool.getConnection(async (error, connection) => {
 	if (error) {
-		console.error(error.code)
+		console.error(error.code);
 
 		try {
 			const members = await list.members().list();
@@ -34,9 +36,9 @@ pool.getConnection(async (error, connection) => {
 			};
 
 			await mailgun.messages().send(data);
-		} catch (error) {
+		} catch (error2) {
 			console.error('error: failed to get members and send email');
-			console.error(error);
+			console.error(error2);
 		}
 	}
 

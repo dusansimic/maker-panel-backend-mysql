@@ -8,11 +8,6 @@ const errorHandler = require('./error-handler');
 const app = express();
 const server = http.createServer(app);
 
-if (process.env.NODE_ENV === 'development') {
-	const morgan = require('morgan');
-	app.use(morgan('dev'));
-}
-
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', api);
